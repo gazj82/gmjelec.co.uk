@@ -1,0 +1,76 @@
+#+title: Hands-On Guile Scheme for Beginners
+#+video: 3eXK9YZ0NjU
+
+- Start Date: February 5, 2024
+- Duration: 4 Weeks
+- Location: Online
+- Participants: Up to 20
+- Experience Level: Beginner
+
+* Learn Scheme With Us!
+
+[[https://en.wikipedia.org/wiki/Scheme_(programming_language)][Scheme]] is a fascinating programming language with a minimal design that is both easy for beginners to learn and incredibly powerful for advanced users.
+
+[[https://www.gnu.org/software/guile/][Guile Scheme]] is a practical Scheme implementation with a growing community thanks to projects like [[https://guix.gnu.org][GNU Guix]], [[https://spritely.institute/goblins/][Spritely Goblins]], and [[https://spritely.institute/hoot/][Guile Hoot]].  I believe it is the best language to use for crafting reproducible systems, personal tool hacking, and task automation.
+
+*Hands-On Guile Scheme for Beginners* is a 4-week, interactive learning course led by [[https://daviwil.com][David Wilson]] of [[https://youtube.com/@SystemCrafters][System Crafters]].  You will learn how to think like a Scheme programmer through interactive programming demonstrations, directed project work, and group discussions both live and over e-mail.
+
+By the end of the 4 weeks, you will have written several small programs of your own in Scheme!  You will also know enough about Guile to move on to more advanced tasks like writing GNU Guix configurations.
+
+* Who Should Join?
+
+This course is specifically designed for beginners to Guile Scheme, but it is also intended for those who have not yet learned to program!  If you've never written a line of code before, you /will/ be able to start your programming journey here.
+
+I will be available to personally answer your questions both during the live sessions and via a private e-mail discussion list during the 4 weeks of the course.  I am certain you will get a lot out of this no matter your skill level!
+
+If you are an intermediate to advanced programmer or if you already have some experience with Guile Scheme, I am planning similar interactive courses for you!  Make sure to sign up for the newsletter at the bottom of this page to be notified when these courses are announced.
+
+* How It Works
+
+Starting the week of *February 5, 2024*, we will have one 2-hour live session each week for 4 weeks where I teach you Scheme fundamentals and help you build a few practical projects with Guile.  Each session has a specific set of topics planned with live demonstrations and project exercises for you to work on before the next session.
+
+This will not be like my typical live stream where viewers only talk in chat; this is a group [[https://meet.jit.si/][Jitsi]] call where you can turn on your microphone and video (optional) to participate!  Everyone is welcome to ask questions, provide suggestions, and share their screen.  Later sessions will start with (voluntary) participant demonstrations of what they built for the previous session's exercise.
+
+If you can't make it to one of the live sessions, don't worry! They will all be recorded so that you can watch them at your leisure.  Only other members of this iteration of the course will have access to the recordings.
+
+** Regarding Meeting Times and Timezones
+
+I've received a lot of good questions about what time the course will take place.  That will be determined when we have a full class!
+
+A week before the class starts, I will poll all participants to see what time zones you're in and ideal days/times.  After crunching the numbers for a bit, I'll suggest some ideal times that should hit the targets for the majority.
+
+If it turns out that the time zones are too varied, I may do a second live session per week to accomodate everyone, but I hope to avoid it.
+
+I personally live in Greece so the time will need to work for me, too! :)
+
+* What You'll Learn
+
+Here is an overview of the topics we will cover during the 4 weeks:
+
+- Setting up Emacs as a Guile development environment
+- Basic interactive development using the Geiser REPL
+- Scheme language fundamentals
+- Writing your own functions
+- Handling user input
+- Working with the operating system
+- Turning Guile code into executable scripts
+- Basic Guile debugging
+- How to get Guile help in Emacs
+
+... and more based on your input!
+
+* How To Join
+
+*REGISTRATIONS CLOSED, THE FEBRUARY 2024 COURSE IS NOW FULL*
+
+Huge thanks to everyone who registered to the course so far!  If you were thinking about signing up, make sure to sign up for the newsletter (form at the bottom of this page) to be notified when the next iteration will be open for registration.
+
+The next iteration will occur in *March or April*!
+
+For those who registered, you have been added to a special mailing list for participants of this course.  I will soon send you a few e-mails to finalize the schedule and help you prepare your machine to hack on Guile Scheme code along with me.
+
+* Not Ready Yet?
+
+If this isn't a good time for you to join this course, I will most likely run another instance of it in the second half of this year!
+
+To be notified when new courses are announced, subscribe to the System Crafters Newsletter using this form:
