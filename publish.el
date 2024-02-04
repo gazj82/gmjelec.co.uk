@@ -86,7 +86,7 @@
                            (nav (@ (class "nav"))
                                 (a (@ (class "nav-link") (href "/")) "Home") " "
                                 (a (@ (class "nav-link") (href "/services/")) "Services") " "
-                                (a (@ (class "nav-link") (href "/Projects/")) "Projects") " "
+                                (a (@ (class "nav-link") (href "/projects/")) "Projects") " "
                                 (a (@ (class "nav-link") (href "/contact/")) "Contact")))))))
 
 (defun dw/site-footer ()
@@ -139,25 +139,25 @@
     `(html (@ (lang "en"))
            (head
             (meta (@ (charset "utf-8")))
-            (meta (@ (author "System Crafters - David Wilson")))
+            (meta (@ (author "G M James Electrical - Gary James")))
             (meta (@ (name "viewport")
                      (content "width=device-width, initial-scale=1, shrink-to-fit=no")))
             (link (@ (rel "icon") (type "image/png") (href "/img/favicon.png")))
-            (link (@ (rel "alternative")
-                     (type "application/rss+xml")
-                     (title "System Crafters News")
-                     (href ,(concat dw/site-url "/rss/news.xml"))))
+            ;; (link (@ (rel "alternative")
+            ;;          (type "application/rss+xml")
+            ;;          (title "System Crafters News")
+            ;;          (href ,(concat dw/site-url "/rss/news.xml"))))
             (link (@ (rel "stylesheet") (href ,(concat dw/site-url "/fonts/iosevka-aile/iosevka-aile.css"))))
             (link (@ (rel "stylesheet") (href ,(concat dw/site-url "/fonts/jetbrains-mono/jetbrains-mono.css"))))
             (link (@ (rel "stylesheet") (href ,(concat dw/site-url "/css/code.css"))))
             (link (@ (rel "stylesheet") (href ,(concat dw/site-url "/css/site.css"))))
-            (script (@ (defer "defer")
-                       (data-domain "systemcrafters.net")
-                       (src "https://plausible.io/js/plausible.js"))
-                    ;; Empty string to cause a closing </script> tag
-                    "")
+            ;; (script (@ (defer "defer")
+            ;;            (data-domain "systemcrafters.net")
+            ;;            (src "https://plausible.io/js/plausible.js"))
+            ;;         ;; Empty string to cause a closing </script> tag
+            ;;         "")
             ,(when head-extra head-extra)
-            (title ,(concat title " - System Crafters")))
+            (title ,(concat title " - GMJ Electrical")))
            (body ,@(unless exclude-header
                      (dw/site-header))
                  (div (@ (class "container"))
@@ -238,30 +238,30 @@
      (when (and container (not (string= "" container)))
        (format "</%s>" (cl-subseq container 0 (cl-search " " container)))))))
 
-(defun dw/org-html-src-block (src-block _contents info)
-  (let* ((lang (org-element-property :language src-block))
-	       (code (org-html-format-code src-block info)))
-    (format "<pre>%s</pre>" (string-trim code))))
+;; (defun dw/org-html-src-block (src-block _contents info)
+;;   (let* ((lang (org-element-property :language src-block))
+;; 	       (code (org-html-format-code src-block info)))
+;;     (format "<pre>%s</pre>" (string-trim code))))
 
-(defun dw/org-html-special-block (special-block contents info)
-  "Transcode a SPECIAL-BLOCK element from Org to HTML.
-CONTENTS holds the contents of the block.  INFO is a plist
-holding contextual information."
-  (let* ((block-type (org-element-property :type special-block))
-         (attributes (org-export-read-attribute :attr_html special-block)))
-	  (format "<div class=\"%s center\">\n%s\n</div>"
-            block-type
-            (or contents
-                (if (string= block-type "cta")
-                    "If you find this guide helpful, please consider supporting System Crafters via the links on the <a href=\"/how-to-help/#support-my-work\">How to Help</a> page!"
-                  "")))))
+;; (defun dw/org-html-special-block (special-block contents info)
+;;   "Transcode a SPECIAL-BLOCK element from Org to HTML.
+;; CONTENTS holds the contents of the block.  INFO is a plist
+;; holding contextual information."
+;;   (let* ((block-type (org-element-property :type special-block))
+;;          (attributes (org-export-read-attribute :attr_html special-block)))
+;; 	  (format "<div class=\"%s center\">\n%s\n</div>"
+;;             block-type
+;;             (or contents
+;;                 (if (string= block-type "cta")
+;;                     "If you find this guide helpful, please consider supporting System Crafters via the links on the <a href=\"/how-to-help/#support-my-work\">How to Help</a> page!"
+;;                   "")))))
 
 (org-export-define-derived-backend 'site-html 'html
                                    :translate-alist
                                    '((template . dw/org-html-template)
                                      (link . dw/org-html-link)
-                                     (src-block . dw/org-html-src-block)
-                                     (special-block . dw/org-html-special-block)
+                                     ;(src-block . dw/org-html-src-block)
+                                     ;(special-block . dw/org-html-special-block)
                                      (headline . dw/org-html-headline))
                                    :options-alist
                                    '((:video "VIDEO" nil nil)))
@@ -282,30 +282,30 @@ holding contextual information."
                           plist
                           article-path))))
 
-(defun dw/publish-newsletter-page (plist filename pub-dir)
-  "Publish a newsletter .txt file to a simple HTML page."
-  (let* ((issue-name (file-name-sans-extension
-                      (file-name-nondirectory filename)))
-         (output-file (expand-file-name
-                       (concat issue-name ".html")
-                       pub-dir))
-         (contents (with-temp-buffer
-                     (insert-file-contents filename)
-                     (buffer-string))))
-    (with-temp-file output-file
-      (insert
-       (dw/generate-page
-        (concat "Issue "
-                (nth 2 (split-string issue-name "-")))
-        (format "<pre class=\"newsletter-text\">%s</pre>"
-                (replace-regexp-in-string
-                 "\\(http\\|https\\)://[^ \t\n\r<>\"']*[^ \t\n\r<>\".,;!?']"
-                 (lambda (match)
-                   (format "<a href=\"%s\">%s</a>" match match))
-                 contents))
-        '()
-        :exclude-header t
-        :exclude-footer t)))))
+;; (defun dw/publish-newsletter-page (plist filename pub-dir)
+;;   "Publish a newsletter .txt file to a simple HTML page."
+;;   (let* ((issue-name (file-name-sans-extension
+;;                       (file-name-nondirectory filename)))
+;;          (output-file (expand-file-name
+;;                        (concat issue-name ".html")
+;;                        pub-dir))
+;;          (contents (with-temp-buffer
+;;                      (insert-file-contents filename)
+;;                      (buffer-string))))
+;;     (with-temp-file output-file
+;;       (insert
+;;        (dw/generate-page
+;;         (concat "Issue "
+;;                 (nth 2 (split-string issue-name "-")))
+;;         (format "<pre class=\"newsletter-text\">%s</pre>"
+;;                 (replace-regexp-in-string
+;;                  "\\(http\\|https\\)://[^ \t\n\r<>\"']*[^ \t\n\r<>\".,;!?']"
+;;                  (lambda (match)
+;;                    (format "<a href=\"%s\">%s</a>" match match))
+;;                  contents))
+;;         '()
+;;         :exclude-header t
+;;         :exclude-footer t)))))
 
 (setq org-publish-use-timestamps-flag t
       org-publish-timestamp-directory "./.org-cache/"
@@ -324,18 +324,18 @@ holding contextual information."
       org-export-with-toc nil
       make-backup-files nil)
 
-(defun dw/format-live-stream-entry (entry style project)
-  "Format posts with author and published data in the index page."
-  (cond ((not (directory-name-p entry))
-         (format "[[file:%s][%s]] - %s"
-                 entry
-                 (org-publish-find-title entry project)
-                 (format-time-string "%B %d, %Y"
-                                     (org-publish-find-date entry project))))
-        ((eq style 'tree) (file-name-nondirectory (directory-file-name entry)))
-        (t entry)))
+;; (defun dw/format-live-stream-entry (entry style project)
+;;   "Format posts with author and published data in the index page."
+;;   (cond ((not (directory-name-p entry))
+;;          (format "[[file:%s][%s]] - %s"
+;;                  entry
+;;                  (org-publish-find-title entry project)
+;;                  (format-time-string "%B %d, %Y"
+;;                                      (org-publish-find-date entry project))))
+;;         ((eq style 'tree) (file-name-nondirectory (directory-file-name entry)))
+;;         (t entry)))
 
-(defun dw/format-news-entry (entry style project)
+(defun dw/format-project-entry (entry style project)
   "Format posts with author and published data in the index page."
   (cond ((not (directory-name-p entry))
          (format "[[file:%s][%s]] - %s · %s"
@@ -347,7 +347,7 @@ holding contextual information."
         ((eq style 'tree) (file-name-nondirectory (directory-file-name entry)))
         (t entry)))
 
-(defun dw/news-sitemap (title files)
+(defun dw/project-sitemap (title files)
   (format "#+title: %s\n\n%s"
           title
           (mapconcat (lambda (file)
@@ -355,31 +355,31 @@ holding contextual information."
                      (cadr files)
                      "\n")))
 
-(defun dw/rss-extract-title (html-file)
-  "Extract the title from an HTML file."
-  (with-temp-buffer
-    (insert-file-contents html-file)
-    (let ((dom (libxml-parse-html-region (point-min) (point-max))))
-      (dom-text (car (dom-by-class dom "site-post-title"))))))
+;; (defun dw/rss-extract-title (html-file)
+;;   "Extract the title from an HTML file."
+;;   (with-temp-buffer
+;;     (insert-file-contents html-file)
+;;     (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+;;       (dom-text (car (dom-by-class dom "site-post-title"))))))
 
-(defun dw/rss-extract-date (html-file)
-  "Extract the post date from an HTML file."
-  (with-temp-buffer
-    (insert-file-contents html-file)
-    (let* ((dom (libxml-parse-html-region (point-min) (point-max)))
-           (date-string (dom-text (car (dom-by-class dom "site-post-meta"))))
-           (parsed-date (parse-time-string date-string))
-           (day (nth 3 parsed-date))
-           (month (nth 4 parsed-date))
-           (year (nth 5 parsed-date)))
-      ;; NOTE: Hardcoding this at 8am for now
-      (encode-time 0 0 8 day month year))))
+;; (defun dw/rss-extract-date (html-file)
+;;   "Extract the post date from an HTML file."
+;;   (with-temp-buffer
+;;     (insert-file-contents html-file)
+;;     (let* ((dom (libxml-parse-html-region (point-min) (point-max)))
+;;            (date-string (dom-text (car (dom-by-class dom "site-post-meta"))))
+;;            (parsed-date (parse-time-string date-string))
+;;            (day (nth 3 parsed-date))
+;;            (month (nth 4 parsed-date))
+;;            (year (nth 5 parsed-date)))
+;;       ;; NOTE: Hardcoding this at 8am for now
+;;       (encode-time 0 0 8 day month year))))
 
-                                        ;(defun dw/rss-extract-summary (html-file)
-                                        ;  )
+;;                                         ;(defun dw/rss-extract-summary (html-file)
+;;                                         ;  )
 
-(setq webfeeder-title-function #'dw/rss-extract-title
-      webfeeder-date-function #'dw/rss-extract-date)
+;; (setq webfeeder-title-function #'dw/rss-extract-title
+;;       webfeeder-date-function #'dw/rss-extract-date)
 
 (setq org-publish-project-alist
       (list '("systemcrafters:main"
@@ -389,67 +389,67 @@ holding contextual information."
               :publishing-function org-html-publish-to-html
               :with-title nil
               :with-timestamps nil)
-            '("systemcrafters:faq"
-              :base-directory "./content/faq"
-              :base-extension "org"
-              :publishing-directory "./public/faq"
-              :publishing-function org-html-publish-to-html
-              :with-title nil
-              :with-timestamps nil)
-            '("systemcrafters:courses"
-              :base-directory "./content/courses"
-              :base-extension "org"
-              :recursive t
-              :publishing-directory "./public/courses"
-              :publishing-function org-html-publish-to-html
-              :with-title nil
-              :with-timestamps nil)
+            ;; '("systemcrafters:faq"
+            ;;   :base-directory "./content/faq"
+            ;;   :base-extension "org"
+            ;;   :publishing-directory "./public/faq"
+            ;;   :publishing-function org-html-publish-to-html
+            ;;   :with-title nil
+            ;;   :with-timestamps nil)
+            ;; '("systemcrafters:courses"
+            ;;   :base-directory "./content/courses"
+            ;;   :base-extension "org"
+            ;;   :recursive t
+            ;;   :publishing-directory "./public/courses"
+            ;;   :publishing-function org-html-publish-to-html
+            ;;   :with-title nil
+            ;;   :with-timestamps nil)
             '("systemcrafters:assets"
               :base-directory "./assets"
               :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|woff2\\|ttf"
               :publishing-directory "./public"
               :recursive t
               :publishing-function org-publish-attachment)
-            '("systemcrafters:live-streams"
-              :base-directory "./content/live-streams"
+            ;; '("systemcrafters:live-streams"
+            ;;   :base-directory "./content/live-streams"
+            ;;   :base-extension "org"
+            ;;   :publishing-directory "./public/live-streams"
+            ;;   :publishing-function org-html-publish-to-html
+            ;;   :auto-sitemap t
+            ;;   :sitemap-filename "../live-streams.org"
+            ;;   :sitemap-title "Live Streams"
+            ;;   :sitemap-format-entry dw/format-live-stream-entry
+            ;;   :sitemap-style list
+            ;;   :sitemap-sort-files anti-chronologically
+            ;;   :with-title nil
+            ;;   :with-timestamps nil)
+            '("systemcrafters:projects"
+              :base-directory "./content/projects"
               :base-extension "org"
-              :publishing-directory "./public/live-streams"
+              :publishing-directory "./public/projects"
               :publishing-function org-html-publish-to-html
               :auto-sitemap t
-              :sitemap-filename "../live-streams.org"
-              :sitemap-title "Live Streams"
-              :sitemap-format-entry dw/format-live-stream-entry
+              :sitemap-filename "../projects.org"
+              :sitemap-title "G M James projects"
+              :sitemap-format-entry dw/format-project-entry
               :sitemap-style list
+              ;; :sitemap-function dw/project-sitemap
               :sitemap-sort-files anti-chronologically
-              :with-title nil
-              :with-timestamps nil)
-            '("systemcrafters:news"
-              :base-directory "./content/news"
-              :base-extension "org"
-              :publishing-directory "./public/news"
-              :publishing-function org-html-publish-to-html
-              :auto-sitemap t
-              :sitemap-filename "../news.org"
-              :sitemap-title "System Crafters News"
-              :sitemap-format-entry dw/format-news-entry
-              :sitemap-style list
-              ;; :sitemap-function dw/news-sitemap
-              :sitemap-sort-files anti-chronologically
-              :with-title nil
-              :with-timestamps nil)
-            '("systemcrafters:newsletter"
-              :base-directory "./content/newsletter"
-              :base-extension "txt"
-              :publishing-directory "./public/newsletter"
-              :publishing-function dw/publish-newsletter-page)
-            '("systemcrafters:videos"
-              :base-directory "./content/videos"
-              :base-extension "org"
-              :recursive t
-              :publishing-directory "./public"
-              :publishing-function org-html-publish-to-html
               :with-title nil
               :with-timestamps nil)))
+            ;; '("systemcrafters:newsletter"
+            ;;   :base-directory "./content/newsletter"
+            ;;   :base-extension "txt"
+            ;;   :publishing-directory "./public/newsletter"
+            ;;   :publishing-function dw/publish-newsletter-page)
+            ;; '("systemcrafters:videos"
+            ;;   :base-directory "./content/videos"
+            ;;   :base-extension "org"
+            ;;   :recursive t
+            ;;   :publishing-directory "./public"
+            ;;   :publishing-function org-html-publish-to-html
+            ;;   :with-title nil
+            ;;   :with-timestamps nil)))
 
 ;; TODO: Generate a _redirects file instead once Codeberg Pages releases a new version
 (defun dw/generate-redirects (redirects)
@@ -470,27 +470,27 @@ holding contextual information."
   "Publish the entire site."
   (interactive)
 
-  (make-directory "public/rss" t)
-  (make-directory "public/newsletter" t)
+  ;(make-directory "public/rss" t)
+  ;(make-directory "public/newsletter" t)
 
   (org-publish-all (string-equal (or (getenv "FORCE")
                                      (getenv "CI"))
                                  "true"))
 
-  (webfeeder-build "rss/news.xml"
-                   "./public"
-                   dw/site-url
-                   (let ((default-directory (expand-file-name "./public/")))
-                     (remove "news/index.html"
-                             (directory-files-recursively "news"
-                                                          ".*\\.html$")))
-                   :builder 'webfeeder-make-rss
-                   :title "System Crafters News"
-                   :description "News and Insights from System Crafters!"
-                   :author "David Wilson")
+  ;; (webfeeder-build "rss/news.xml"
+  ;;                  "./public"
+  ;;                  dw/site-url
+  ;;                  (let ((default-directory (expand-file-name "./public/")))
+  ;;                    (remove "news/index.html"
+  ;;                            (directory-files-recursively "news"
+  ;;                                                         ".*\\.html$")))
+  ;;                  :builder 'webfeeder-make-rss
+  ;;                  :title "Projects"
+  ;;                  :description "Current and previous projects"
+  ;;                  :author "Gary James")
 
-  (dw/generate-redirects '(("support-the-channel" . "how-to-help")
-                           ("videos" . "guides")))
+  ;;(dw/generate-redirects '(("support-the-channel" . "how-to-help")
+  ;;                         ("videos" . "guides")))
 
   ;; Copy the domains file to ensure the custom domain resolves
   (copy-file ".domains" "public/.domains" t))

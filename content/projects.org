@@ -1,4 +1,4 @@
-#+TITLE: System Crafters News
+#+TITLE: G M James projects
 
 - [[file:new-system-crafters-forum.org][Announcing the System Crafters Forum!]] - David Wilson · February 01, 2024
 - [[file:crafted-emacs-november-2023.org][Crafted Emacs Update]] - Jeff Bowman · November 28, 2023

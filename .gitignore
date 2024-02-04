@@ -4,8 +4,5 @@
 ; Ignore the org-publish cache
 .org-cache/
 
-; Ignore shared content with daviwil.com
+; Ignore published content at gmjelec.co.uk
 public/
-
-; Ignore Gemini output
-gemini/
