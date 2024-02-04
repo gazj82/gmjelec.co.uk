@@ -66,91 +66,41 @@
 (use-package webfeeder
   :ensure t)
 
-(defvar yt-iframe-format
-  (concat "<div class=\"video\">"
-          "  <iframe src=\"https://www.youtube.com/embed/%s\" allowfullscreen></iframe>"
-          "</div>"))
-
-(defun dw/embed-video (video-id)
-  (format yt-iframe-format video-id))
-
-(setq user-full-name "David Wilson")
-(setq user-mail-address "david@systemcrafters.net")
+(setq user-full-name "Gary James")
+(setq user-mail-address "gary@gmjelec.co.uk")
 
 (defvar dw/site-url (if (string-equal (getenv "CI") "true")
                         "" ;; Don't hardcode the domain
                       "http://localhost:8080")
   "The URL for the site being generated.")
 
-(defun dw/embed-list-form ()
-  `(div (@ (class "list-form center"))
-        (div (@ (class "list-form-title")) "Subscribe to the System Crafters Newsletter!")
-        (form (@ (method "POST")
-                 (action "https://www.simplelists.com/subscribe.php"))
-              (input (@ (type "hidden") (name "format") (value "text")))
-              (input (@ (type "hidden") (name "action") (value "subscribe")))
-              (input (@ (type "hidden") (name "list") (value "news@lists.systemcrafters.net")))
-              (div (@ (class "list-form-message"))
-                   "Stay up to date with the latest System Crafters news and updates!  Read the "
-                   (a (@ (href "/newsletter/")) "Newsletter")
-                   " page for more information.")
-              (div (@ (class "row"))
-                   (div (@ (class "column"))
-                        (div (@ (class "row center list-form-label")) "Name (optional)")
-                        (div (@ (class "row")) (input (@ (type "text") (name "name")))))
-                   (div (@ (class "column"))
-                        (div (@ (class "row center list-form-label")) "Email Address")
-                        (div (@ (class "row")) (input (@ (type "text") (name "email"))))))
-              (div nil
-                   (input (@ (type "submit") (value "Subscribe!")))))))
-
-(org-link-set-parameters
- "yt"
- :follow
- (lambda (handle)
-   (browse-url
-    (concat "https://www.youtube.com/watch?v="
-            handle)))
- :export
- (lambda (path desc backend channel)
-   (when (eq backend 'html)
-     (dw/embed-video path))))
-
 (defun dw/site-header ()
   (list `(header (@ (class "site-header"))
                  (div (@ (class "container"))
                       (div (@ (class "site-title"))
                            (img (@ (class "logo")
-                                   (src ,(concat dw/site-url "/img/sc_logo.png"))
-                                   (alt "System Crafters")))))
+                                   (src ,(concat dw/site-url "/img/gmj_logo.png"))
+                                   (alt "G M James Electrical")))))
                  (div (@ (class "site-masthead"))
                       (div (@ (class "container"))
                            (nav (@ (class "nav"))
                                 (a (@ (class "nav-link") (href "/")) "Home") " "
-                                (a (@ (class "nav-link") (href "/guides/")) "Guides") " "
-                                (a (@ (class "nav-link") (href "/news/")) "News") " "
-                                (a (@ (class "nav-link") (href "/community/")) "Community") " "
-                                (a (@ (class "nav-link") (href "https://store.systemcrafters.net?utm_source=sc-site-nav")) "Store") " "
-                                (a (@ (class "nav-link") (href "/how-to-help/")) "How to Help")))))))
+                                (a (@ (class "nav-link") (href "/services/")) "Services") " "
+                                (a (@ (class "nav-link") (href "/Projects/")) "Projects") " "
+                                (a (@ (class "nav-link") (href "/contact/")) "Contact")))))))
 
 (defun dw/site-footer ()
   (list `(footer (@ (class "site-footer"))
                  (div (@ (class "container"))
                       (div (@ (class "row"))
                            (div (@ (class "column"))
-                                (p (a (@ (href ,(concat dw/site-url "/privacy-policy/"))) "Privacy Policy")
-                                   " · "
-                                   (a (@ (href ,(concat dw/site-url "/credits/"))) "Credits")
-                                   " · "
-                                   (a (@ (href ,(concat dw/site-url "/rss/"))) "RSS Feeds")
-                                   " · "
-                                   (a (@ (rel "me") (href "https://fosstodon.org/@daviwil")) "Fediverse"))
-                                (p "© 2021-2023 System Crafters LLC"))
+                                (p (a (@ (href ,(concat dw/site-url "/credits/"))) "Credits"))
+                                (p "© 2024 G M James Electrical"))
                            (div (@ (class "column align-right"))
-                                (p (a (@ (href "https://codeberg.org/SystemCrafters/systemcrafters.net"))
-                                      (img (@ (src ,(concat dw/site-url "/img/codeberg.png"))
+                                (p (a (@ (href ""))
+                                      (img (@ (src ,(concat dw/site-url "/img/emacs.png"))
                                               (style "width: 120px")
-                                              (alt "Contribute on Codeberg")))))))))))
+                                              (alt "Made with emacs")))))))))))
 
 (defun get-article-output-path (org-file pub-dir)
   (let ((article-dir (concat pub-dir
@@ -216,12 +166,9 @@
                                ,title)
                            ,(when publish-date
                               `(p (@ (class "site-post-meta")) ,publish-date))
-                           ,(if-let ((video-id (plist-get info :video)))
-                                (dw/embed-video video-id))
                            ,(when pre-content pre-content)
                            (div (@ (id "content"))
-                                ,content))
-                      ,(dw/embed-list-form))
+                                ,content)))
                  ,@(unless exclude-footer
                      (dw/site-footer)))))))
 
@@ -243,8 +190,7 @@
   (let ((exported-link (org-export-custom-protocol-maybe link contents 'html info)))
     (cond
      (exported-link exported-link)
-     ((and (null contents)
-           (not (org-export-inline-image-p link)))
+     ((and (equal contents nil) (not (org-export-inline-image-p link)))     
       (format "<a href=\"%s\">%s</a>"
               (org-element-property :raw-link link)
               (org-element-property :raw-link link)))
@@ -547,11 +493,7 @@ holding contextual information."
                            ("videos" . "guides")))
 
   ;; Copy the domains file to ensure the custom domain resolves
-  (copy-file ".domains" "public/.domains" t)
-
-  ;; Copy the .well-known folder for Matrix
-  (unless (file-exists-p "public/.well-known")
-    (copy-directory ".well-known" "public/" t)))
+  (copy-file ".domains" "public/.domains" t))
 
 (provide 'publish)
 ;;; publish.el ends here

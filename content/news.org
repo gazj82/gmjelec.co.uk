@@ -1,5 +1,6 @@
 #+TITLE: System Crafters News
 
+- [[file:new-system-crafters-forum.org][Announcing the System Crafters Forum!]] - David Wilson · February 01, 2024
 - [[file:crafted-emacs-november-2023.org][Crafted Emacs Update]] - Jeff Bowman · November 28, 2023
 - [[file:crafted-emacs-v2-release-2023.org][Crafted Emacs V2 Release Announcement]] - Jeff Bowman · October 20, 2023
 - [[file:crafted-emacs-v2announce-2023.org][Crafted Emacs V2 pre-release Announcement]] - Jeff Bowman · October 17, 2023

@@ -1,0 +1,50 @@
+#+title: Services
+
+All work is fully insured, guaranteed, and [[https://niceic.com/][NICEIC]] approved.
+
+* Domestic
+ -  Full & partial rewires.
+ -  New installations.
+ -  Single & 3 phase consumer unit upgrades.
+ -  Garage & outbuilding supplies.
+ -  Data points.
+ -  Alterations.
+ -  Garden lighting.
+ -  EV chargers.
+ -  Smart home systems.
+ -  Fire detection.
+ -  Led lighting.
+ -  Heating controls.
+ -  Fault Finding.
+ -  EICR’s.
+
+* Commercial
+ -  Full & partial rewires.
+ -  Single & 3 phase distribution board upgrades.
+ -  Single & 3 phase supplies for dedicated equipment.
+ -  Restaurant & bar fitouts.
+ -  Emergency lighting.
+ -  Office installations.
+ -  Data installations.
+ -  Alterations.
+ -  Fire alarm installation & termination.
+ -  Containment systems.
+ -  Led lighting upgrades.
+ -  Fault Finding.
+ -  EICR’s.
+ -  Disabled toilet alarms.
+
+* Industrial
+ -  Full & partial rewires.
+ -  Single & 3 phase distribution board upgrades.
+ -  Single & 3 phase supplies for dedicated equipment.
+ -  Data installations.
+ -  Distribution wiring.
+ -  Data installations.
+ -  Emergency lighting.
+ -  Fire alarm installation & termination.
+ -  BMS wiring & termination.
+ -  Containment systems.
+ -  Fault finding.
+ -  EICR’s.
+
