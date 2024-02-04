@@ -452,19 +452,19 @@
             ;;   :with-timestamps nil)))
 
 ;; TODO: Generate a _redirects file instead once Codeberg Pages releases a new version
-(defun dw/generate-redirects (redirects)
-  (dolist (redirect redirects)
-    (let ((output-path (concat "./public/" (car redirect) "/index.html"))
-          (redirect-url (concat dw/site-url "/" (cdr redirect) "/")))
-      (make-directory (file-name-directory output-path) t)
-      (with-temp-file output-path
-        (insert
-         (dw/generate-page "Redirecting..."
-                           (concat "You are being redirected to "
-                                   "<a href=\"" redirect-url "\">" redirect-url "</a>")
-                           '()
-                           :head-extra
-                           (concat "<meta http-equiv=\"refresh\" content=\"0; url='" redirect-url "'\"/>")))))))
+;; (defun dw/generate-redirects (redirects)
+;;   (dolist (redirect redirects)
+;;     (let ((output-path (concat "./public/" (car redirect) "/index.html"))
+;;           (redirect-url (concat dw/site-url "/" (cdr redirect) "/")))
+;;       (make-directory (file-name-directory output-path) t)
+;;       (with-temp-file output-path
+;;         (insert
+;;          (dw/generate-page "Redirecting..."
+;;                            (concat "You are being redirected to "
+;;                                    "<a href=\"" redirect-url "\">" redirect-url "</a>")
+;;                            '()
+;;                            :head-extra
+;;                            (concat "<meta http-equiv=\"refresh\" content=\"0; url='" redirect-url "'\"/>")))))))
 
 (defun dw/publish ()
   "Publish the entire site."

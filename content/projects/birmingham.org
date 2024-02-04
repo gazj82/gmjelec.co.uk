@@ -1,0 +1,25 @@
+#+title: Plant room for Birmingham university
+#+date: [2020-07-07 Tue]
+#+author: Gary James
+#+kind: project
+
+A recently finished plant room that is to be delivered to Birmingham university. Some photos of the works as they were carried out.
+
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham1.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham2.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham3.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham4.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham5.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham6.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham7.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham8.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/birmingham9.jpg]]

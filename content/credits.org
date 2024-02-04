@@ -1,16 +1,15 @@
 #+title: Credits and Attribution
 
-The System Crafters website and YouTube channel use some content created by others under permissive licenses.
+* Code
 
-Here is the attribution for these works:
+- The elisp code to produce this website is courtesy of [[https://fosstodon.org/@daviwil][David]] at [[https://systemcrafters.net][SystemCrafters]], with his original code hosted at [[https://codeberg.org/SystemCrafters/systemcrafters-site][Codeberg]].
+
+- Edits to David's original code that are used at gmjelec.co.uk were made by Gary James, the source code is hosted at [[https://github.com/gazj82/gmjelec.co.uk][GitHub]] as required under the [[https://www.gnu.org/licenses/licenses.html][GNU General docs license V3]]
+
+* Editor
+
+ - The editor used to write / modify the elisp code and the [[https://orgmode.org/][org]] pages used to generate this website was the fantatsic [[https://www.gnu.org/software/emacs/][GNU Emacs]].
 
 * Images
 
 - *Site Header Background:* [[./samuel-ferrara-uOi3lg8fGl4-unsplash.jpg][samuel-ferrara-uOi3lg8fGl4-unsplash.jpg]] by [[https://unsplash.com/photos/uOi3lg8fGl4][Samuel Ferrara]] (Unsplash [[https://unsplash.com/license][license]])
-
-* Music
-
-- Coriolis Effect by logos feat. stefsax, licensed Creative Commons 3.0 CC-BY http://ccmixter.org/files/mseq/26296
-- reNovation by airtone, licensed Creative Commons 3.0 CC-BY http://ccmixter.org/files/airtone/60674
-- ukeSounds by airtone, licensed Creative Commons 3.0 CC-BY http://ccmixter.org/files/airtone/32655
-- Between Worlds (Instrumental) by Aussens@iter, licensed Creative Commons 3.0 CC-BY http://ccmixter.org/files/tobias_weber/56664
