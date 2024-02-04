@@ -93,7 +93,7 @@
                                 (p (a (@ (href ,(concat dw/site-url "/credits/"))) "Credits"))
                                 (p "© 2024 G M James Electrical"))
                            (div (@ (class "column align-right"))
-                                (p (a (@ (href ""))
+                                (p (a (@ (href "https://www.gnu.org/software/emacs/"))
                                       (img (@ (src ,(concat dw/site-url "/img/emacs.png"))
                                               (style "width: 120px")
                                               (alt "Made with emacs")))))))))))
