@@ -1,5 +1,6 @@
 #+title: Page Not Found
 
+* GURU Meditation
 The page you requested was not found.
 
-If you reached this page through a link from another website (or within systemcrafters.net), please send an e-mail to david at systemcrafters.net to let me know!
+If you reached this page through a link from another website, please send an e-mail to gary @ gmjelec.co.uk to let me know!

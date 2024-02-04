@@ -4,7 +4,7 @@ G M James Electrical are electrical contractors based in Chatteris, Cambridgeshi
 
 Our work is fully insured and inspected anually by the [[https://niceic.com][NICEIC]] (National inspection council for electrical installation contractors).
 
-A list of our services can be found here. 
+A list of our services can be found [[file:services.org][here]]. 
 
 #+ATTR_HTML: :width 150px
 [[../img/niceiclogo.png]]
