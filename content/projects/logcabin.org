@@ -6,14 +6,14 @@
 Recently finished log cabin installed with steel conduit and metal clad sockets and switches. LED lights hung on jack chain and outside lights at the front.
 
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin1.jpg]]
+[[../../img/projects/logcabin1.jpg]]
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin2.jpg]]
+[[../../img/projects/logcabin2.jpg]]
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin3.jpg]]
+[[../../img/projects/logcabin3.jpg]]
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin4.jpg]]
+[[../../img/projects/logcabin4.jpg]]
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin5.jpg]]
+[[../../img/projects/logcabin5.jpg]]
 #+ATTR_HTML: :width 850px
-[[../img/projects/logcabin6.jpg]]
+[[../../img/projects/logcabin6.jpg]]
