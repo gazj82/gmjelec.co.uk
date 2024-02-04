@@ -49,10 +49,10 @@
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
-
 ;; Require built-in dependencies
-(require 'vc-git)
-;(require 'subr-x)
+(require 'subr-x)
+(require 'cl-lib)
+(require 'ox-publish)
 
 ;; Install other dependencies
 (use-package esxml
@@ -61,9 +61,6 @@
 
 (use-package htmlize
   :ensure t)
-
- (use-package webfeeder
-   :ensure t)
 
 (setq user-full-name "Gary James")
 (setq user-mail-address "gary@gmjelec.co.uk")

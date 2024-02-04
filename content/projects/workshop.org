@@ -11,7 +11,7 @@
 - Bench lighting
 #+ATTR_HTML: :width 850px
 [[../img/projects/workshop2.jpg]]
-- Distribution, with trunking and outside lighting timeclock
+- Distribution, with trunking and outside lighting time-clock
 #+ATTR_HTML: :width 850px
 [[../img/projects/workshop3.jpg]]
 - Outside sockets ready for farm machinery

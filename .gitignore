@@ -6,3 +6,4 @@
 
 ; Ignore published content at gmjelec.co.uk
 public/
+/upload.sh

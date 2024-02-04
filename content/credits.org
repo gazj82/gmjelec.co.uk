@@ -8,7 +8,7 @@
 
 * Editor
 
- - The editor used to write / modify the elisp code and the [[https://orgmode.org/][org]] pages used to generate this website was the fantatsic [[https://www.gnu.org/software/emacs/][GNU Emacs]].
+ - The editor used to write / modify the elisp code and the [[https://orgmode.org/][org]] pages used to generate this website was the fantastic [[https://www.gnu.org/software/emacs/][GNU Emacs]].
 
 * Images
 
