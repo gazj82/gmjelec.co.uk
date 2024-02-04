@@ -1,0 +1,19 @@
+#+title: Log cabin installation
+#+date: [2020-10-24 Sat]
+#+author: Gary James
+#+kind: project
+
+Recently finished log cabin installed with steel conduit and metal clad sockets and switches. LED lights hung on jack chain and outside lights at the front.
+
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin1.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin2.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin3.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin4.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin5.jpg]]
+#+ATTR_HTML: :width 850px
+[[../img/projects/logcabin6.jpg]]
